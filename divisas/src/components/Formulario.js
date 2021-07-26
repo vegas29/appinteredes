@@ -1,6 +1,26 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
+import Error from './Error';
 
-const Formulario = () => {
+const Formulario = ({guardarMonto}) => {
+
+    //State de la app
+
+    const [cantidad, guardarCantidad] = useState("");
+    const [error, guardarError] = useState(false);
+    const buscarConversion = e =>{
+        e.preventDefault();
+
+        //Validar la entrada del mondo
+        if(cantidad.trim()=== '' || cantidad < 0 || isNaN(cantidad)){
+            guardarError(true)
+            return;
+        }
+
+        guardarError(false);
+
+        //Enviar el monto
+        guardarMonto(cantidad);
+    }
     return (
         <Fragment>
             <div className="container container-sm">
@@ -15,12 +35,20 @@ const Formulario = () => {
 
                 <div className="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="conversion" role="tabpanel" aria-labelledby="conversion-tab">
-                        <form id="forms">
+                        <form
+                            onSubmit={buscarConversion}
+                            id="forms">
                             <fieldset>
                                 <div className="container container-md mt-5">
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">Monto</label>
-                                        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Monto" />
+                                        <input
+                                            type="number"
+                                            class="form-control"
+                                            id="exampleFormControlInput1"
+                                            placeholder="Monto"
+                                            onChange={e => guardarCantidad(e.target.value)}
+                                        />
                                     </div>
 
                                     <div class="mb-3">
@@ -43,10 +71,13 @@ const Formulario = () => {
                                         </select>
                                     </div>
 
-                                    <button className="btn btn-success d-block m-auto w-25">Convertir</button>
+                                    <input 
+                                        type="submit"
+                                        className="btn btn-success d-block m-auto w-25"
+                                        value="Convertir" />
                                 </div>
                             </fieldset>
-
+                            {error ? <Error mensaje="Agrega un monto valido, por favor"/> : null}
                         </form>
 
                         <div className="jumbotron bg-light mt-5 p-5">
