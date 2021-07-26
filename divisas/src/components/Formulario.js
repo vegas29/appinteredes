@@ -54,7 +54,37 @@ const Formulario = () => {
                         </div>
                     </div>
 
-                    <div class="tab-pane fade" id="historial" role="tabpanel" aria-labelledby="historial-tab">Hola soy el tab2</div>
+                    <div class="tab-pane fade" id="historial" role="tabpanel" aria-labelledby="historial-tab">
+                        <p className="mt-5">Fecha de la consulta: <span>26/07/2021</span></p>
+                        <div className="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th className="bg-secondary" scope="col">Nombre</th>
+                                        <th className="bg-secondary" scope="col">Abreviatura</th>
+                                        <th className="bg-secondary" scope="col">Precio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>@fat</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>@fat</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
             </div>
